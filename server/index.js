@@ -36,10 +36,14 @@ app.use(
 cloudinaryConnect();
 
 // routes
-app.use("/api/aka1/auth",userRoutes);
+/* app.use("/api/aka1/auth",userRoutes);
 app.use("/api/aka1/profile",profileRoutes);
 app.use("/api/aka1/course",courseRoutes);
-app.use("/api/aka1/payment",paymentRoutes);
+app.use("/api/aka1/payment",paymentRoutes); */
+app.use("/auth",userRoutes);
+app.use("/profile",profileRoutes);
+app.use("/course",courseRoutes);
+app.use("/payment",paymentRoutes);
 
 // default route for home page
 app.get("/",(req,res)=>{
