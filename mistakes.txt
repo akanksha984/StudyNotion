@@ -1,0 +1,7 @@
+1. load be data chala jaa rha tha -> localstorage
+
+demo card --
+4111 1111 1111 1111
+11/66
+123
+121212

@@ -1,0 +1,36 @@
+/* write your css here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body{
+    overflow-x: hidden;
+}
+.homepage_bg{
+    background-image: url("./assets/Images/bghome.svg");
+}
+
+.highlight-text{
+    background-image: linear-gradient(to right, #b39bf8, #91afff, #76bfff, #6ccdfd, #78d7f2, #61d2f2, #43ccf3, #00c7f4, #00aeff, #008fff, #0066ff, #4f11ff);
+    background-clip: text;
+    color: transparent;
+}
+
+.input-style{
+    @apply bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-2 border-b-richblack-600
+}
+.label-style{
+    @apply text-[1.05rem] text-richblack-5 mb-1 leading-[1.375rem] tracking-wide
+}
+.error-style{
+    @apply -mt-1 text-[12px] text-pink-300 italic
+}
+.checkbox-style{
+    @apply accent-richblack-700 border-richblack-300 h-4 w-4 rounded text-richblack-400 focus:ring-2 focus:ring-richblack-5
+}
+.black-button{
+    @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5 border border-richblack-700
+}
+.yellow-button{
+    @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900
+}
