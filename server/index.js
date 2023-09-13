@@ -21,7 +21,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: "http://localhost:3000",    // frontend se request accept karne ke liye
+        //origin: "http://localhost:3000",    // frontend se request accept karne ke liye
+        origin:"*",
         credentials: true,
     })
 )
