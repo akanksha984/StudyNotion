@@ -64,7 +64,8 @@ const Catalog= ()=>{
                 <p className="text-richblack-5 text-3xl">{catalogPageData?.data?.selectedCategory?.name}</p>
                 <p className="text-richblack-200 max-w-[870px] italic">{catalogPageData?.data?.selectedCategory?.description}</p>
             </div>
-
+            <div className="bg-richblack-900 pt-5">
+             
             {/* section1 */}
             <div className="mx-auto box-content w-full max-w-maxContentTab lg:max-w-maxContent">
                 <div className='text-center text-4xl font-semibold text-richblack-5 mb-5'>Courses to get you started</div>
@@ -106,7 +107,8 @@ const Catalog= ()=>{
 
                 </div>
             </div>
-
+   
+            </div>
             {/* footer */}
             <Footer/>
         </div>

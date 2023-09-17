@@ -9,7 +9,7 @@ const Course = require("../models/Course");
 exports.updateProfile= async(req,res)=>{
     try{
         // fetch the data
-        const {dateOfBirth="",about="",contactNumber, gender}= req.body;
+        const {firstName="", lastName="", dateOfBirth="",about="",contactNumber, gender}= req.body;
         const userId = req.user.id;
         // validation
 /*         if (!contactNumber || !gender || !userId){
@@ -19,16 +19,28 @@ exports.updateProfile= async(req,res)=>{
             })
         } */
         // find the profile anad update    
-        console.log(userId);
+       // console.log(userId);
         const userDetails= await User.findById(userId);
-        const profileId= userDetails.additionalDetails;
+        const profile= await Profile.findById(userDetails.additionalDetails);
+        const user= await User.findByIdAndUpdate(userId,{
+            firstName, lastName
+        });
+        await user.save();
+        profile.dateOfBirth= dateOfBirth;
+        profile.about= about;
+        profile.contactNumber= contactNumber;
+        profile.gender= gender;
+        await profile.save();
+
+        const updatedUserDetails= await User.findById(userId).populate('additionalDetails').exec();
+        /* const profileId= userDetails.additionalDetails;
         await Profile.findByIdAndUpdate(profileId,{
              dateOfBirth:dateOfBirth,
              about: about,
              gender: gender,
              contactNumber: contactNumber,
-        },{new:true});
-        //  other way of doind the same
+        },{new:true}); */
+        //  other way of doing the same
         /* console.log("userdetails-> ",userDetails);
         console.log(userDetails.additionalDetails);
         const profile= await Profile.findById(userDetails.additionalDetails);
@@ -42,7 +54,8 @@ exports.updateProfile= async(req,res)=>{
         //return res
         return res.status(200).json({
             success: true, 
-            message: "Profile updated successfully"
+            message: "Profile updated successfully",
+            updatedUserDetails
         })
     }catch(error){
         return res.json({

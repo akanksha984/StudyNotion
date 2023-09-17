@@ -231,12 +231,12 @@ exports.changePassword= async(req,res)=>{
                 message: "The password you entered is incorrect."
             })
         }
-        if (newPassword!==confirmPassword){
+        /* if (newPassword!==confirmPassword){
             return res.json({
                 success: false,
-                message: "New paddword does not match with confirm password",
+                message: "New password does not match with confirm password",
             });
-        }
+        } */
         // update password in db
         const encryptedPass= await bcrypt.hash(newPassword,10) ;
         const updatedUser= await User.findByIdAndUpdate(req.user.id,
@@ -256,7 +256,7 @@ exports.changePassword= async(req,res)=>{
         }
         // return response 
         return res.status(200).json({
-            success: false,
+            success: true,
             message: "Successfully updated the password",
         })
 

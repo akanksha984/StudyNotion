@@ -3,6 +3,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { resetPassword } from "../services/operations/authAPI";
+import { BiArrowBack } from "react-icons/bi";
 
 const UpdatePassword= ()=>{
     const {loading}= useSelector((state)=>state.auth);
@@ -22,7 +23,7 @@ const UpdatePassword= ()=>{
     }
     function submitHandler(e){
         e.preventDefault();
-        const token= location.pathname.split('/').at[-1];
+        const token= location.pathname.split("/").at(-1);
         dispatch(resetPassword(formData.password,formData.confirmPassword,token));
     }
     return (
@@ -80,13 +81,17 @@ const UpdatePassword= ()=>{
                                 </span>
                             </label>
                             
-                            <button>
+                            <button type='submit' className="mt-6 w-full rounded-[8px] bg-yellow-50 p-[12px] font-medium text-richblue-900">
                                 Reset Password
                             </button>
                         </form>
-                        <div>
+                        <div className="mt-6 flex items-center justify-between">
                             <Link to="/login">
-                                <p>Back to login</p>
+                               
+                                <p className="flex items-center gap-x-2 text-richblack-5">
+                                    <BiArrowBack/>
+                                    Back to login
+                                </p>
                             </Link>
                         </div>
                     </div>

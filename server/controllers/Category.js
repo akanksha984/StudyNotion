@@ -72,12 +72,12 @@ exports.categoryPageDetails = async(req,res)=>{
             });
         }
         //console.log("cate",selectedCategory);
-        if (selectedCategory.course.length === 0){
+        /* if (selectedCategory.course.length === 0){
             return res.status(404).json({
                 success: false,
                 message: "No courses found for the selected category",
             })
-        }
+        } */
 
         // get courses for different categories
         const categoriesExceptSelected= await Category.find({

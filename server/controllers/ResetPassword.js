@@ -29,6 +29,7 @@
             token: token,
             resetPasswordExpires: Date.now() + 5*60*1000,
         },{new:true});
+        //console.log("SEnt token to updated user: ",updatedDetails)
         // create url
         const url= `http://localhost:3000/update-password/${token}`;  
         console.log("Password reset token link:",url);  
@@ -68,10 +69,11 @@ exports.resetPassword= async(req,res)=>{
         if (password!== confirmPassword){
             return res.json({
                 success: false,
-                message: "Confirm password do not macth with password",
+                message: "Confirm password do not match with password",
             })
         }
         // get userdetails from db using token
+        //console.log("got token= ",token)
         const userDetails = await User.findOne({token: token});
         // if no entry invalid token
         if (!userDetails){
@@ -90,9 +92,10 @@ exports.resetPassword= async(req,res)=>{
         // hash password
         const newHashedPassword= await bcrypt.hash(password,10);
         // password update
-        await User.findOneAndUpdate({token:token},{
+        const updated= await User.findOneAndUpdate({token:token},{
             password: newHashedPassword,
         },{new: true});
+        console.log("USER updated: ", updated)
         // return res
         return res.status(200).json({
             success: true,

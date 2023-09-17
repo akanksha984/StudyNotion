@@ -16,6 +16,7 @@ exports.auth= async(req,res,next)=>{
         }
         // verify token
         try{
+            console.log("got taken as --> ",token)
             const decode= jwt.verify(token,process.env.JWT_SECRET);
             console.log("Decoded->",decode); 
             req.user= decode;
